@@ -1,3 +1,44 @@
+
+// PSEUDO CODE
+// Generate a password when the button is clicked
+// Present a series of prompts for password criteria
+
+//  Length of password
+//       * At least 10 characters but no more than 64.
+
+  // prompt: how long would you like your password to be? (10-64)
+
+  var passLength = parseInt(prompt("How long would you like your password to be?"));
+
+  if(typeof(passLength) == 'number') {
+    console.log("Well done! It's a number!");
+  } else {
+    alert("Please type a number between 10-64");
+  }
+
+// var isLowercase = false;
+// var is
+
+
+  // Validation:
+    // ensure input is numerical and falls within the required specifications (checking that the number of characters is between 10-64)
+
+//     * Character types
+//       * Lowercase
+// Confirm prompt: Do you want lowercase characters in your password?
+//       * Uppercase
+// Confirm prompt: Do you want uppercase characters in your password?
+//       * Numeric
+// Confirm prompt: Do you want numeric characters in your password?
+//       * Special characters ($@%&*, etc)
+// Confirm prompt: Do you want special characters in your password?
+//   * Code should validate for each input and at least one character type should be selected
+//minimum requirements for the code to function: length of characters and at least 1 character type
+//   * Once prompts are answered then the password should be generated and displayed in an alert or written to the page
+
+
+
+
 // Array of special characters to be included in password
 var specialCharacters = [
   '@',
