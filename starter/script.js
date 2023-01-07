@@ -16,17 +16,7 @@ var passLength = prompt("How long would you like your password to be?");
       alert("Your password will be "+passLength+" long");
     }
   }
-
-
-
-// if(passLength) == 'number' {
-//   alert("it's a number!");
-// } else {
-//   alert("type a number");
-// }
-
-// var isLowercase = false;
-// var is
+var lowercase, uppercase, numeric, specialChar;
 
 
   // Validation:
