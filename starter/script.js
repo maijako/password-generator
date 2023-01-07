@@ -6,15 +6,24 @@
 //  Length of password
 //       * At least 10 characters but no more than 64.
 
-  // prompt: how long would you like your password to be? (10-64)
-
-  var passLength = parseInt(prompt("How long would you like your password to be?"));
-
-  if(typeof(passLength) == 'number') {
-    console.log("Well done! It's a number!");
-  } else {
-    alert("Please type a number between 10-64");
+//Prompting user to input a number between 10 and 64
+//Making sure that user input is returned as a number
+var passLength = prompt("How long would you like your password to be?");
+  if (passLength !== null) {
+    if (isNaN(passLength) || passLength==="" || passLength < 10 || passLength > 64 ){
+      alert("Please input a number between 10 and 64!");
+    } else {
+      alert("Your password will be "+passLength+" long");
+    }
   }
+
+
+
+// if(passLength) == 'number' {
+//   alert("it's a number!");
+// } else {
+//   alert("type a number");
+// }
 
 // var isLowercase = false;
 // var is
