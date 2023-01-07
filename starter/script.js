@@ -1,27 +1,10 @@
 
-// PSEUDO CODE
 // Generate a password when the button is clicked
 // Present a series of prompts for password criteria
-
 //  Length of password
 //       * At least 10 characters but no more than 64.
-
-//Prompting user to input a number between 10 and 64
-//Making sure that user input is returned as a number
-var passLength = prompt("How long would you like your password to be?");
-  if (passLength !== null) {
-    if (isNaN(passLength) || passLength==="" || passLength < 10 || passLength > 64 ){
-      alert("Please input a number between 10 and 64!");
-    } else {
-      alert("Your password will be "+passLength+" long");
-    }
-  }
-var lowercase, uppercase, numeric, specialChar;
-
-
   // Validation:
     // ensure input is numerical and falls within the required specifications (checking that the number of characters is between 10-64)
-
 //     * Character types
 //       * Lowercase
 // Confirm prompt: Do you want lowercase characters in your password?
@@ -35,7 +18,33 @@ var lowercase, uppercase, numeric, specialChar;
 //minimum requirements for the code to function: length of characters and at least 1 character type
 //   * Once prompts are answered then the password should be generated and displayed in an alert or written to the page
 
+//__________________________________________________________________________________________________
+//__________________________________________________________________________________________________
 
+
+//Let's start by declaring a variable that will store user choice of password length
+  //First, we'll use a prompt to ask the user how long their password should be
+  //Then, we'll run and if... else to make sure the user inputs a number between 10-64
+var passLength = prompt("How long would you like your password to be?");
+  if (passLength !== null) {
+    if (isNaN(passLength) || passLength==="" || passLength < 10 || passLength > 64 ){
+      alert("Please input a number between 10 and 64!");
+    } else {
+      alert("Your password will be "+passLength+" long");
+    }
+  }
+
+//Now let's declare variables that will store user character type choices
+var lowerPass, upperPass, numPass, specialPass;
+
+//Add alerts to the created variables in which user choices will be stored
+lowerPass = alert("Include lowercase letters?");
+upperPass = alert("Include uppercase letters?");
+numPass = alert("Include numbers?");
+specialPass = alert("Include special characters?");
+
+
+ 
 
 
 // Array of special characters to be included in password
