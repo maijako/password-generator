@@ -109,22 +109,10 @@ var upperCasedCharacters = [
 //Let's start by declaring a variable that will store user choice of password length
   //First, we'll use a prompt to ask the user how long their password should be
   //A do... while loop will ensure that user sees a prompt until a value is put in
-  var passLength = prompt("How long would you like your password to be?");
-  // while (passLength == null);
-    // prompt("Please input a number between 10 and 64!");
+var passLength = prompt("How long would you like your password to be?");
+
 //Then, we'll run and if... else to make sure the user inputs a number between 10-64
  
-  // while (passLength == null) {
-  //   prompt("You can't leave the field blank! Please put in a number");
-  //   break;}
-
-    // if (passLength !== null);
-    //       if (isNaN(passLength) || passLength==="" || passLength < 10 || passLength > 64){
-    //       prompt("Please input a number between 10 and 64!");
-    //     } else {
-    //       alert("Your password will be "+passLength+" long");
-    //     }
-      
     while (passLength == null) {
       alert("You can't leave the field blank! Please put in a number");
       passLength = prompt("Please input a number between 10 and 64!");
@@ -136,42 +124,17 @@ var upperCasedCharacters = [
       }
     }
 
-    // if (passLength !== null) {
-    //       if (isNaN(passLength) || passLength==="" || passLength < 10 || passLength > 64){
-    //       prompt("Please input a number between 10 and 64!");
-    //     } else {
-    //       alert("Your password will be "+passLength+" long");
-    //     }
-    // } 
-   
-  
-//     if (passLength !== null) {
-//       if (isNaN(passLength) || passLength==="" || passLength < 10 || passLength > 64){
-//       prompt("Please input a number between 10 and 64!");
-//     } else {
-//       alert("Your password will be "+passLength+" characters long");
-//     }
-// } 
-  
- 
- 
-    
-   
-
-
 //Now let's declare variables that will store user character type choices
 var lowerPass, upperPass, numPass, specialPass;
 
 //Add confirm messages to the created variables in which user choices will be stored
 lowerPass = confirm("Include lowercase letters?");
-console.log(lowerPass);
 upperPass = confirm("Include uppercase letters?");
 numPass = confirm("Include numbers?");
 specialPass = confirm("Include special characters?");
 
 if ((lowerPass == false) && (upperPass == false) && (numPass == false) && (specialPass == false)){
-  alert("please select at least one condition");
-  
+  alert("Please select at least one condition!");
 }
 
 // Function to prompt user for password options
