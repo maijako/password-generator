@@ -128,18 +128,21 @@ var passLength = prompt("How long would you like your password to be?");
 var lowerPass, upperPass, numPass, specialPass;
 
 //Add confirm messages to the created variables in which user choices will be stored
-lowerPass = confirm("Include lowercase letters?");
-upperPass = confirm("Include uppercase letters?");
-numPass = confirm("Include numbers?");
-specialPass = confirm("Include special characters?");
-
-if ((lowerPass == false) && (upperPass == false) && (numPass == false) && (specialPass == false)){
-  alert("Please select at least one condition!");
-}
-
 // Function to prompt user for password options
 function getPasswordOptions() {
+  lowerPass = confirm("Include lowercase letters?");
+  upperPass = confirm("Include uppercase letters?");
+  numPass = confirm("Include numbers?");
+  specialPass = confirm("Include special characters?");
 }
+getPasswordOptions();
+
+if ((lowerPass == false) && (upperPass == false) && (numPass == false) && (specialPass == false)) {
+  alert("Please select at least one condition!");
+  getPasswordOptions();
+}
+
+
 
 // Function for getting a random element from an array
 function getRandom(arr) {
