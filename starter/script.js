@@ -114,7 +114,7 @@ if (passLength !== null) {
 //Variables to  store user character type choices
 var lowerPass, upperPass, numPass, specialPass;
 //A variable to store the array data for password generation based on user choice
-var userPassArray
+
 
 //Variables to store user choices of special characters to include, stored in a function
 function getPasswordOptions() {
@@ -123,6 +123,7 @@ function getPasswordOptions() {
   numPass = confirm("Include numbers?");
   specialPass = confirm("Include special characters?");
 }
+
 getPasswordOptions();
 
 //A while loop to make sure user selects at least one condition
@@ -131,13 +132,14 @@ while ((lowerPass == false) && (upperPass == false) && (numPass == false) && (sp
   getPasswordOptions();
 }
 
-
-
-
 // Function for getting a random element from an array
 function getRandom(arr) {
-
+  return arr[Math.floor(Math.random()*arr.length)];
 }
+console.log(getRandom(lowerCasedCharacters));
+
+
+
 
 // Function to generate password with user input
 function generatePassword() {
