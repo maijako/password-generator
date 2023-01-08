@@ -114,7 +114,7 @@ if (passLength !== null) {
 //Variables to  store user character type choices
 var lowerPass, upperPass, numPass, specialPass;
 //A variable to store the array data for password generation based on user choice
-var userPassArr;
+var userPassArr = "";
 
 //Variables to store user choices of special characters to include, stored in a function
 function getPasswordOptions() {
@@ -154,28 +154,36 @@ getRandom(numericCharacters);
 getRandom(specialCharacters);
 
 //storing random characters in userPassArr variable based on user choices
-if (lowerPass == true) {
- userPassArr += getRandom(lowerCasedCharacters);
+function constructPassword() {
+  if (lowerPass == true) {
+    userPassArr += getRandom(lowerCasedCharacters);
+   }
+   if (upperPass == true) {
+     userPassArr += getRandom(upperCasedCharacters);
+   }
+   if (numPass == true) {
+     userPassArr += getRandom(numericCharacters);
+   }
+   if (specialPass == true) {
+     userPassArr += getRandom(specialCharacters);
+   }
 }
-if (upperPass == true) {
-  userPassArr +=  getRandom(upperCasedCharacters);
-}
-if (numPass == true) {
-  userPassArr +=  getRandom(numericCharacters);
-}
-if (specialPass == true) {
-  userPassArr +=  getRandom(specialCharacters);
-}
-console.log(userPassArr);
-
-
+constructPassword();
+//changing passLength to integer
+var targetLength = Number(passLength);
 // Function to generate password with user input
 function generatePassword() {
-
+  while (userPassArr.length < targetLength){
+    constructPassword();
+  }
 }
-generatePassword();
 
-// Function to validate that the password contains characters form all user selected arrays
+console.log(userPassArr);
+console.log(typeof(targetLength));
+console.log(targetLength);
+
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
