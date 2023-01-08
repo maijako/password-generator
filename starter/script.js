@@ -115,16 +115,28 @@ if (passLength !== null) {
 var lowerPass, upperPass, numPass, specialPass;
 //A variable to store the array data for password generation based on user choice
 
-
+var userPassArr;
 //Variables to store user choices of special characters to include, stored in a function
 function getPasswordOptions() {
   lowerPass = confirm("Include lowercase letters?");
+  if (lowerPass == true) {
+    userPassArr += lowerCasedCharacters;
+  }
   upperPass = confirm("Include uppercase letters?");
+  if (upperPass == true) {
+    userPassArr += upperCasedCharacters;
+  }
   numPass = confirm("Include numbers?");
+  if (numPass == true) {
+    userPassArr += numericCharacters;
+  }
   specialPass = confirm("Include special characters?");
+  if (specialPass == true){
+    userPassArr += specialCharacters;
+  }
 }
-
 getPasswordOptions();
+
 
 //A while loop to make sure user selects at least one condition
 while ((lowerPass == false) && (upperPass == false) && (numPass == false) && (specialPass == false)) {
@@ -136,14 +148,12 @@ while ((lowerPass == false) && (upperPass == false) && (numPass == false) && (sp
 function getRandom(arr) {
   return arr[Math.floor(Math.random()*arr.length)];
 }
-console.log(getRandom(lowerCasedCharacters));
-
-
+getRandom(userPassArr);
 
 
 // Function to generate password with user input
 function generatePassword() {
-
+ 
 }
 
 // Get references to the #generate element
