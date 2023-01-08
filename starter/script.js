@@ -113,6 +113,8 @@ if (passLength !== null) {
 
 //Variables to  store user character type choices
 var lowerPass, upperPass, numPass, specialPass;
+//A variable to store the array data for password generation based on user choice
+var userPassArray
 
 //Variables to store user choices of special characters to include, stored in a function
 function getPasswordOptions() {
@@ -128,6 +130,7 @@ while ((lowerPass == false) && (upperPass == false) && (numPass == false) && (sp
   alert("Please select at least one condition!");
   getPasswordOptions();
 }
+
 
 
 
