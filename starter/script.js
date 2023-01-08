@@ -118,29 +118,40 @@ var upperCasedCharacters = [
   //   prompt("You can't leave the field blank! Please put in a number");
   //   break;}
 
-  //   if (passLength !== null) {
-  //         if (isNaN(passLength) || passLength==="" || passLength < 10 || passLength > 64){
-  //         prompt("Please input a number between 10 and 64!");
-  //       } else {
-  //         alert("Your password will be "+passLength+" long");
-  //       }
-  //     } 
-  
-
+    // if (passLength !== null);
+    //       if (isNaN(passLength) || passLength==="" || passLength < 10 || passLength > 64){
+    //       prompt("Please input a number between 10 and 64!");
+    //     } else {
+    //       alert("Your password will be "+passLength+" long");
+    //     }
+      
     while (passLength == null) {
-    alert("You can't leave the field blank! Please put in a number");
-    passLength = prompt("Please input a number");
-    }
+      alert("You can't leave the field blank! Please put in a number");
+      passLength = prompt("Please input a number between 10 and 64!");
+      }
 
     if (passLength !== null) {
-          if (isNaN(passLength) || passLength==="" || passLength < 10 || passLength > 64){
-          prompt("Please input a number between 10 and 64!");
-        } else {
-          alert("Your password will be "+passLength+" long");
-        }
-    } 
+      while (isNaN(passLength) || passLength==="" || passLength < 10 || passLength > 64){
+      passLength = prompt("Please input a number between 10 and 64!");
+      }
+    }
+
+    // if (passLength !== null) {
+    //       if (isNaN(passLength) || passLength==="" || passLength < 10 || passLength > 64){
+    //       prompt("Please input a number between 10 and 64!");
+    //     } else {
+    //       alert("Your password will be "+passLength+" long");
+    //     }
+    // } 
    
   
+//     if (passLength !== null) {
+//       if (isNaN(passLength) || passLength==="" || passLength < 10 || passLength > 64){
+//       prompt("Please input a number between 10 and 64!");
+//     } else {
+//       alert("Your password will be "+passLength+" characters long");
+//     }
+// } 
   
  
  
@@ -153,12 +164,14 @@ var lowerPass, upperPass, numPass, specialPass;
 
 //Add confirm messages to the created variables in which user choices will be stored
 lowerPass = confirm("Include lowercase letters?");
+console.log(lowerPass);
 upperPass = confirm("Include uppercase letters?");
 numPass = confirm("Include numbers?");
 specialPass = confirm("Include special characters?");
 
-if ((lowerPass = false) && (upperPass = false) && (numPass = false) && (specialPass = false)){
-  prompt("please select one condition");
+if ((lowerPass == false) && (upperPass == false) && (numPass == false) && (specialPass == false)){
+  alert("please select at least one condition");
+  
 }
 
 // Function to prompt user for password options
