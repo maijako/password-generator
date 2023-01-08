@@ -1,15 +1,5 @@
 
-  // Validation:
-    // ensure input is numerical and falls within the required specifications (checking that the number of characters is between 10-64)
-//     * Character types
-//       * Lowercase
-// Confirm prompt: Do you want lowercase characters in your password?
-//       * Uppercase
-// Confirm prompt: Do you want uppercase characters in your password?
-//       * Numeric
-// Confirm prompt: Do you want numeric characters in your password?
-//       * Special characters ($@%&*, etc)
-// Confirm prompt: Do you want special characters in your password?
+//CRITERIA
 //   * Code should validate for each input and at least one character type should be selected
 //minimum requirements for the code to function: length of characters and at least 1 character type
 //   * Once prompts are answered then the password should be generated and displayed in an alert or written to the page
@@ -106,29 +96,25 @@ var upperCasedCharacters = [
   'Z'
 ];
 
-//Let's start by declaring a variable that will store user choice of password length
-  //First, we'll use a prompt to ask the user how long their password should be
-  //A do... while loop will ensure that user sees a prompt until a value is put in
+//A variable to store user input for password length
 var passLength = prompt("How long would you like your password to be?");
 
-//Then, we'll run and if... else to make sure the user inputs a number between 10-64
- 
-    while (passLength == null) {
-      alert("You can't leave the field blank! Please put in a number");
-      passLength = prompt("Please input a number between 10 and 64!");
-      }
+//A while loop to ensure user doesn't leave the password length blank
+while (passLength == null) {
+  alert("You can't leave the field blank! Please put in a number");
+  passLength = prompt("Please input a number between 10 and 64!");
+}
+//An embedded while loop to ensure user is prompted to input a valid value for password length
+if (passLength !== null) {
+  while (isNaN(passLength) || passLength==="" || passLength < 10 || passLength > 64){
+  passLength = prompt("Please input a number between 10 and 64!");
+  }
+}
 
-    if (passLength !== null) {
-      while (isNaN(passLength) || passLength==="" || passLength < 10 || passLength > 64){
-      passLength = prompt("Please input a number between 10 and 64!");
-      }
-    }
-
-//Now let's declare variables that will store user character type choices
+//Variables to  store user character type choices
 var lowerPass, upperPass, numPass, specialPass;
 
-//Add confirm messages to the created variables in which user choices will be stored
-// Function to prompt user for password options
+//Variables to store user choices of special characters to include, stored in a function
 function getPasswordOptions() {
   lowerPass = confirm("Include lowercase letters?");
   upperPass = confirm("Include uppercase letters?");
@@ -137,7 +123,8 @@ function getPasswordOptions() {
 }
 getPasswordOptions();
 
-if ((lowerPass == false) && (upperPass == false) && (numPass == false) && (specialPass == false)) {
+//A while loop to make sure user selects at least one condition
+while ((lowerPass == false) && (upperPass == false) && (numPass == false) && (specialPass == false)) {
   alert("Please select at least one condition!");
   getPasswordOptions();
 }
