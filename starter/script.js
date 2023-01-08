@@ -113,20 +113,36 @@ var upperCasedCharacters = [
   // while (passLength == null);
     // prompt("Please input a number between 10 and 64!");
 //Then, we'll run and if... else to make sure the user inputs a number between 10-64
-  if (passLength !== null);
-      if (isNaN(passLength) || passLength==="" || passLength < 10 || passLength > 64){
-      prompt("Please input a number between 10 and 64!");
-    } else {
-      alert("Your password will be "+passLength+" long");
+ 
+  // while (passLength == null) {
+  //   prompt("You can't leave the field blank! Please put in a number");
+  //   break;}
+
+  //   if (passLength !== null) {
+  //         if (isNaN(passLength) || passLength==="" || passLength < 10 || passLength > 64){
+  //         prompt("Please input a number between 10 and 64!");
+  //       } else {
+  //         alert("Your password will be "+passLength+" long");
+  //       }
+  //     } 
+  
+
+    while (passLength == null) {
+    alert("You can't leave the field blank! Please put in a number");
+    passLength = prompt("Please input a number");
     }
+
+    if (passLength !== null) {
+          if (isNaN(passLength) || passLength==="" || passLength < 10 || passLength > 64){
+          prompt("Please input a number between 10 and 64!");
+        } else {
+          alert("Your password will be "+passLength+" long");
+        }
+    } 
+   
   
   
-    
-
-
-
-
-
+ 
  
     
    
