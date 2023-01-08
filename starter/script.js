@@ -148,13 +148,19 @@ while ((lowerPass == false) && (upperPass == false) && (numPass == false) && (sp
 function getRandom(arr) {
   return arr[Math.floor(Math.random()*arr.length)];
 }
-getRandom(userPassArr);
+getRandom(lowerCasedCharacters);
+getRandom(upperCasedCharacters);
+getRandom(numericCharacters);
+getRandom(specialCharacters);
 
 
 // Function to generate password with user input
 function generatePassword() {
  
 }
+generatePassword();
+
+// Function to validate that the password contains characters form all user selected arrays;
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
