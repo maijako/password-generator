@@ -114,29 +114,28 @@ if (passLength !== null) {
 //Variables to  store user character type choices
 var lowerPass, upperPass, numPass, specialPass;
 //A variable to store the array data for password generation based on user choice
-
 var userPassArr;
+
 //Variables to store user choices of special characters to include, stored in a function
 function getPasswordOptions() {
   lowerPass = confirm("Include lowercase letters?");
-  if (lowerPass == true) {
-    userPassArr += lowerCasedCharacters;
-  }
+  // if (lowerPass == true) {
+  //   userPassArr += lowerCasedCharacters;
+  // }
   upperPass = confirm("Include uppercase letters?");
-  if (upperPass == true) {
-    userPassArr += upperCasedCharacters;
-  }
+  // if (upperPass == true) {
+  //   userPassArr += upperCasedCharacters;
+  // }
   numPass = confirm("Include numbers?");
-  if (numPass == true) {
-    userPassArr += numericCharacters;
-  }
+  // if (numPass == true) {
+  //   userPassArr += numericCharacters;
+  // }
   specialPass = confirm("Include special characters?");
-  if (specialPass == true){
-    userPassArr += specialCharacters;
-  }
+  // if (specialPass == true){
+  //   userPassArr += specialCharacters;
+  // }
 }
 getPasswordOptions();
-
 
 //A while loop to make sure user selects at least one condition
 while ((lowerPass == false) && (upperPass == false) && (numPass == false) && (specialPass == false)) {
@@ -148,19 +147,35 @@ while ((lowerPass == false) && (upperPass == false) && (numPass == false) && (sp
 function getRandom(arr) {
   return arr[Math.floor(Math.random()*arr.length)];
 }
+
 getRandom(lowerCasedCharacters);
-getRandom(upperCasedCharacters);
+getRandom(upperCasedCharacters)
 getRandom(numericCharacters);
 getRandom(specialCharacters);
+
+//storing random characters in userPassArr variable based on user choices
+if (lowerPass == true) {
+ userPassArr += getRandom(lowerCasedCharacters);
+}
+if (upperPass == true) {
+  userPassArr +=  getRandom(upperCasedCharacters);
+}
+if (numPass == true) {
+  userPassArr +=  getRandom(numericCharacters);
+}
+if (specialPass == true) {
+  userPassArr +=  getRandom(specialCharacters);
+}
+console.log(userPassArr);
 
 
 // Function to generate password with user input
 function generatePassword() {
- 
+
 }
 generatePassword();
 
-// Function to validate that the password contains characters form all user selected arrays;
+// Function to validate that the password contains characters form all user selected arrays
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
