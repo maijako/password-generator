@@ -1,4 +1,4 @@
-
+//SET VARIABLES
 // Array of special characters to be included in password
 var specialCharacters = [
   '@',
@@ -89,95 +89,94 @@ var upperCasedCharacters = [
   'Z'
 ];
 
-//Variables to  store user character type choices
-var lowerPass, upperPass, numPass, specialPass;
-
-//A variable to store the concatenated array data for password based on user choice
+// Variables to store user choices
+var passLength;
+var upperPass;
+var lowerPass;
+var numPass;
+var specialPass;
 var userPassArr = "";
+var userPassword = "";
 
 //A variable to store user input for password length
-function promptMe(){
-var passLength = prompt("How long would you like your password to be?");
 
-//A while loop to continue prompting user to enter a value until it is done
-while (passLength == null) {
-  alert("You can't leave the field blank! Please put in a number");
-  passLength = prompt("Please input a number between 10 and 64!");
-}
-//If user does enter a value, run a while loop until the value entered meets acceptance criteria 
-if (passLength !== null) {
-  while (isNaN(passLength) || passLength === "" || passLength < 10 || passLength > 64) {
+  passLength = prompt("How long would you like your password to be?");
+
+  //A while loop to continue prompting user to enter a value until it is done
+  while (passLength == null) {
+    alert("You can't leave the field blank! Please put in a number");
     passLength = prompt("Please input a number between 10 and 64!");
   }
-}
+  //If user does enter a value, run a while loop until the value entered meets acceptance criteria 
+  if (passLength !== null) {
+    while (isNaN(passLength) || passLength === "" || passLength < 10 || passLength > 64) {
+      passLength = prompt("Please input a number between 10 and 64!");
+    }
+  }
 
-//Variables to store user choices of special characters to include, stored in a function
-function getPasswordOptions() {
-  lowerPass = confirm("Include lowercase letters?");
-  upperPass = confirm("Include uppercase letters?");
-  numPass = confirm("Include numbers?");
-  specialPass = confirm("Include special characters?");
-}
-getPasswordOptions();
-
-//A while loop to run the function above until the user selects at least one condition
-while ((lowerPass == false) && (upperPass == false) && (numPass == false) && (specialPass == false)) {
-  alert("Please select at least one condition!");
+  //Variables to store user choices of special characters to include, stored in a function
+  function getPasswordOptions() {
+    lowerPass = confirm("Include lowercase letters?");
+    upperPass = confirm("Include uppercase letters?");
+    numPass = confirm("Include numbers?");
+    specialPass = confirm("Include special characters?");
+  }
   getPasswordOptions();
-}
 
-//changing passLength value type back to number and storing it in a new variable
-var targetLength = Number(passLength);
-
-//Function for getting a random element from an array
-function getRandom(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
-
-//Function for storing random characters in userPassArr variable based on user choices
-function constructPassword() {
-
-  if (lowerPass == true && userPassArr.length < targetLength) {
-    userPassArr += getRandom(lowerCasedCharacters);
+  //A while loop to run the function above until the user selects at least one condition
+  while ((lowerPass == false) && (upperPass == false) && (numPass == false) && (specialPass == false)) {
+    alert("Please select at least one condition!");
+    getPasswordOptions();
   }
-  if (upperPass == true && userPassArr.length < targetLength) {
-    userPassArr += getRandom(upperCasedCharacters);
+
+  //changing passLength value type back to number and storing it in a new variable
+  var targetLength = Number(passLength);
+
+  //Function for getting a random element from an array
+  function getRandom(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
   }
-  if (numPass == true && userPassArr.length < targetLength) {
-    userPassArr += getRandom(numericCharacters);
+
+  //Function for storing random characters in userPassArr variable based on user choices
+  function constructPassword() {
+
+    if (lowerPass == true && userPassArr.length < targetLength) {
+      passArr += getRandom(lowerCasedCharacters);
+    }
+    if (upperPass == true && userPassArr.length < targetLength) {
+      userPassArr += getRandom(upperCasedCharacters);
+    }
+    if (numPass == true && userPassArr.length < targetLength) {
+      userPassArr += getRandom(numericCharacters);
+    }
+    if (specialPass == true && userPassArr.length < targetLength) {
+      userPassArr += getRandom(specialCharacters);
+    }
   }
-  if (specialPass == true && userPassArr.length < targetLength) {
-    userPassArr += getRandom(specialCharacters);
+
+  // Function to generate password with user input
+  function generatePassword() {
+    while (userPassArr.length < targetLength) {
+      constructPassword();
+    }
   }
-}
+  generatePassword();
 
-// Function to generate password with user input
-function generatePassword() {
-  while (userPassArr.length < targetLength) {
-    constructPassword();
+  // Get references to the #generate element
+  var generateBtn = document.querySelector('#generate');
+
+  // Write password to the #password input
+  function writePassword() {
+    var password = userPassArr;
+    var passwordText = document.querySelector('#password');
+    passwordText.value = password;
   }
-}
-generatePassword();
+  writePassword();
 
-// Get references to the #generate element
-var generateBtn = document.querySelector('#generate');
 
-// Write password to the #password input
-function writePassword() {
-  var password = userPassArr;
-  var passwordText = document.querySelector('#password');
+  // Add event listener to generate button
+  generateBtn.addEventListener('click', writePassword);
 
-  passwordText.value = password;
-}
-writePassword();
 
-// Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
+  console.log(userPassArr);
 
-function reset() {
-  generateBtn = document.querySelector('#generate');
-}
-reset();
-generateBtn.addEventListener('click', reset);
-console.log(userPassArr);
-}
