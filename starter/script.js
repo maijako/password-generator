@@ -95,89 +95,88 @@ var upperPass;
 var lowerPass;
 var numPass;
 var specialPass;
-var userPassArr = "";
 var userPassword = "";
 
 
-  passLength = prompt("How long would you like your password to be?");
+passLength = prompt("How long would you like your password to be?");
 
-  //A while loop to require number
-  while (passLength == null) {
-    alert("You can't leave the field blank! Please put in a number");
+//A while loop to require number
+while (passLength == null) {
+  alert("You can't leave the field blank! Please put in a number");
+  passLength = prompt("Please input a number between 10 and 64!");
+}
+//A while loop to require length
+if (passLength !== null) {
+  while (isNaN(passLength) || passLength === "" || passLength < 10 || passLength > 64) {
     passLength = prompt("Please input a number between 10 and 64!");
   }
-  //A while loop to require length
-  if (passLength !== null) {
-    while (isNaN(passLength) || passLength === "" || passLength < 10 || passLength > 64) {
-      passLength = prompt("Please input a number between 10 and 64!");
-    }
-  }
+}
 
-  //Function to store user choices of characters
-  function getPasswordOptions() {
-    lowerPass = confirm("Include lowercase letters?");
-    upperPass = confirm("Include uppercase letters?");
-    numPass = confirm("Include numbers?");
-    specialPass = confirm("Include special characters?");
-  }
+//Function to store user choices of characters
+function getPasswordOptions() {
+  lowerPass = confirm("Include lowercase letters?");
+  upperPass = confirm("Include uppercase letters?");
+  numPass = confirm("Include numbers?");
+  specialPass = confirm("Include special characters?");
+}
+getPasswordOptions();
+
+//A while loop to run the function above until the user selects at least one condition
+while ((lowerPass == false) && (upperPass == false) && (numPass == false) && (specialPass == false)) {
+  alert("Please select at least one condition!");
   getPasswordOptions();
+}
 
-  //A while loop to run the function above until the user selects at least one condition
-  while ((lowerPass == false) && (upperPass == false) && (numPass == false) && (specialPass == false)) {
-    alert("Please select at least one condition!");
-    getPasswordOptions();
+//changing passLength value type back to number and storing it in a new variable
+var targetLength = Number(passLength);
+
+//Function for getting a random element from an array
+function getRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+//Function for storing random characters in userPassArr variable based on user choices
+function generatePassword() {
+  
+  if (lowerPass == true && userPassword.length < targetLength) {
+    userPassword += getRandom(lowerCasedCharacters);
   }
-
-  //changing passLength value type back to number and storing it in a new variable
-  var targetLength = Number(passLength);
-
-  //Function for getting a random element from an array
-  function getRandom(arr) {
-    return arr[Math.floor(Math.random() * arr.length)];
+  if (upperPass == true && userPassword.length < targetLength) {
+    userPassword += getRandom(upperCasedCharacters);
   }
-
-  //Function for storing random characters in userPassArr variable based on user choices
-  function constructPassword() {
-    userPassword = "";
-    if (lowerPass == true && userPassArr.length < targetLength) {
-      userPassArr += getRandom(lowerCasedCharacters);
-    }
-    if (upperPass == true && userPassArr.length < targetLength) {
-      userPassArr += getRandom(upperCasedCharacters);
-    }
-    if (numPass == true && userPassArr.length < targetLength) {
-      userPassArr += getRandom(numericCharacters);
-    }
-    if (specialPass == true && userPassArr.length < targetLength) {
-      userPassArr += getRandom(specialCharacters);
-    }
-    return userPassword;
+  if (numPass == true && userPassword.length < targetLength) {
+    userPassword += getRandom(numericCharacters);
   }
-
-  // Function to generate password with user input
-  function generatePassword() {
-    while (userPassArr.length < targetLength) {
-      constructPassword();
-    }
+  if (specialPass == true && userPassword.length < targetLength) {
+    userPassword += getRandom(specialCharacters);
   }
-  generatePassword();
+  return userPassword;
+}
 
-
-  // Get references to the #generate element
-  var generateBtn = document.querySelector('#generate');
-
-  // Write password to the #password input
-  function writePassword() {
-    var password = userPassword;
-    var passwordText = document.querySelector('#password');
-    passwordText.value = password;
+// Function to make sure user password is the chosen length
+function checkLength() {
+  while (userPassword.length < targetLength) {
+    generatePassword();
   }
-  writePassword();
+}
+checkLength();
 
 
-  // Add event listener to generate button
-  generateBtn.addEventListener('click', writePassword);
+// Get references to the #generate element
+var generateBtn = document.querySelector('#generate');
+
+// Write password to the #password input
+function writePassword() {
+  var password = userPassword;
+  var passwordText = document.querySelector('#password');
+  passwordText.value = password;
+}
+writePassword();
 
 
-  console.log(userPassArr);
+// Add event listener to generate button
+generateBtn.addEventListener('click', writePassword);
+
+
+console.log(userPassword);
 
