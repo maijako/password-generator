@@ -97,24 +97,24 @@ var numPass;
 var specialPass;
 var userPassword;
 
-
-//Function to store user choices of characters
+//Function making the button interactive on click
 function promptMe() {
+  //Function to store user choices of characters
   function getPasswordOptions() {
     passLength = prompt("How long would you like your password to be?");
 
-    //A while loop to require number
+    //A while loop to validate number
     while (passLength == null) {
       alert("You can't leave the field blank! Please put in a number");
       passLength = prompt("Please input a number between 10 and 64!");
     }
-    //A while loop to require length
+    //A while loop to validate input type and length
     if (passLength !== null) {
       while (isNaN(passLength) || passLength === "" || passLength < 10 || passLength > 64) {
         passLength = prompt("Please input a number between 10 and 64!");
       }
     }
-
+    //Collecting user preferences 
     lowerPass = confirm("Include lowercase letters?");
     upperPass = confirm("Include uppercase letters?");
     numPass = confirm("Include numbers?");
@@ -138,7 +138,9 @@ function promptMe() {
 
   //Function for storing random characters in userPassArr variable based on user choices
   function generatePassword() {
+    //An empty string to store a new password each time the button is clicked
     userPassword = "";
+    //A while loop to run until the password length reaches user target
     while (userPassword.length < targetLength) {
       if (lowerPass == true && userPassword.length < targetLength) {
         userPassword += getRandom(lowerCasedCharacters);
@@ -168,10 +170,6 @@ function promptMe() {
   }
   writePassword();
 
-
   // Add event listener to generate button
   generateBtn.addEventListener('click', writePassword);
-
-
-  console.log(userPassword);
 }
