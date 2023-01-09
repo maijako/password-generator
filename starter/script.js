@@ -159,33 +159,14 @@ function generatePassword() {
     constructPassword();
   }
 }
-
 generatePassword();
-
-// }
-//   var options = {
-//     "passLength": passLength, 
-//     "lowerPass": lowerPass,
-//     "upperPass": upperPass,
-//     "numPass": numPass,
-//     "specialPass": specialPass
-//   }
-//   return options;
-
-console.log(userPassArr);
-console.log(targetLength);
-console.log(userPassArr.length)
-
-
-// randomize characters in the generated password
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var password = userPassArr;
   var passwordText = document.querySelector('#password');
 
   passwordText.value = password;
