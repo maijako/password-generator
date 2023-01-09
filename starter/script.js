@@ -95,7 +95,7 @@ var upperPass;
 var lowerPass;
 var numPass;
 var specialPass;
-var userPassword = "";
+var userPassword;
 
 
 passLength = prompt("How long would you like your password to be?");
@@ -137,7 +137,8 @@ function getRandom(arr) {
 
 //Function for storing random characters in userPassArr variable based on user choices
 function generatePassword() {
-  
+  userPassword = "";
+  while (userPassword.length < targetLength){
   if (lowerPass == true && userPassword.length < targetLength) {
     userPassword += getRandom(lowerCasedCharacters);
   }
@@ -149,18 +150,10 @@ function generatePassword() {
   }
   if (specialPass == true && userPassword.length < targetLength) {
     userPassword += getRandom(specialCharacters);
-  }
+  }}
   return userPassword;
 }
-
-// Function to make sure user password is the chosen length
-function checkLength() {
-  while (userPassword.length < targetLength) {
-    generatePassword();
-  }
-}
-checkLength();
-
+generatePassword();
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
