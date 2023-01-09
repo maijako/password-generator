@@ -6,13 +6,13 @@ This is a code for a [Random Password Generator](https://maijako.github.io/passw
 
 It features a simple responsive design and an interactive button that triggers password criteria selection options from a user before generating a password that matches them:
 
-![Input screen](./assets/05-javascript-challenge-demo.png)
+![Input screen](./assets/images/05-javascript-challenge-demo.png)
 
 The logic was written using JavaScript, and user input data was validated through a combination of functions, nested while loops and conditional statements, that help prompt user to input a valid value:
-![User valid value prompt](./assets/warn_passwordgen_screen.PNG)
+![User valid value prompt](./assets/images/warn_passwordgen_screen.PNG)
 
 And return a valid password that satisfies the selected criteria:
-![Final password](./assets/result_passwordgen_screen.PNG)
+![Final password](./assets/images/result_passwordgen_screen.PNG)
 
 
 ## Usage
