@@ -98,23 +98,22 @@ var specialPass;
 var userPassArr = "";
 var userPassword = "";
 
-//A variable to store user input for password length
 
   passLength = prompt("How long would you like your password to be?");
 
-  //A while loop to continue prompting user to enter a value until it is done
+  //A while loop to require number
   while (passLength == null) {
     alert("You can't leave the field blank! Please put in a number");
     passLength = prompt("Please input a number between 10 and 64!");
   }
-  //If user does enter a value, run a while loop until the value entered meets acceptance criteria 
+  //A while loop to require length
   if (passLength !== null) {
     while (isNaN(passLength) || passLength === "" || passLength < 10 || passLength > 64) {
       passLength = prompt("Please input a number between 10 and 64!");
     }
   }
 
-  //Variables to store user choices of special characters to include, stored in a function
+  //Function to store user choices of characters
   function getPasswordOptions() {
     lowerPass = confirm("Include lowercase letters?");
     upperPass = confirm("Include uppercase letters?");
@@ -139,9 +138,9 @@ var userPassword = "";
 
   //Function for storing random characters in userPassArr variable based on user choices
   function constructPassword() {
-
+    userPassword = "";
     if (lowerPass == true && userPassArr.length < targetLength) {
-      passArr += getRandom(lowerCasedCharacters);
+      userPassArr += getRandom(lowerCasedCharacters);
     }
     if (upperPass == true && userPassArr.length < targetLength) {
       userPassArr += getRandom(upperCasedCharacters);
@@ -152,6 +151,7 @@ var userPassword = "";
     if (specialPass == true && userPassArr.length < targetLength) {
       userPassArr += getRandom(specialCharacters);
     }
+    return userPassword;
   }
 
   // Function to generate password with user input
@@ -167,7 +167,7 @@ var userPassword = "";
 
   // Write password to the #password input
   function writePassword() {
-    var password = userPassArr;
+    var password = userPassword;
     var passwordText = document.querySelector('#password');
     passwordText.value = password;
   }
