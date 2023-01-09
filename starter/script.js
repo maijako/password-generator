@@ -126,17 +126,15 @@ while ((lowerPass == false) && (upperPass == false) && (numPass == false) && (sp
   getPasswordOptions();
 }
 
-
 //changing passLength value type back to number and storing it in a new variable
 var targetLength = Number(passLength);
-
 
 //Function for getting a random element from an array
 function getRandom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-//storing random characters in userPassArr variable based on user choices
+//Function for storing random characters in userPassArr variable based on user choices
 function constructPassword() {
 
   if (lowerPass == true && userPassArr.length < targetLength) {
@@ -175,4 +173,11 @@ writePassword();
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
+function reset() {
+  generateBtn = document.querySelector('#generate');
+}
+reset();
+generateBtn.addEventListener('click', reset);
+console.log(userPassArr);
 }
