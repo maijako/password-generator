@@ -137,28 +137,52 @@ var userPassword = "";
   }
 
   //Function for storing random characters in userPassArr variable based on user choices
-  function constructPassword() {
+  // function constructPassword() {
+  //   userPassword = "";
+  //   if (lowerPass == true && userPassArr.length < targetLength) {
+  //     userPassArr += getRandom(lowerCasedCharacters);
+  //   }
+  //   if (upperPass == true && userPassArr.length < targetLength) {
+  //     userPassArr += getRandom(upperCasedCharacters);
+  //   }
+  //   if (numPass == true && userPassArr.length < targetLength) {
+  //     userPassArr += getRandom(numericCharacters);
+  //   }
+  //   if (specialPass == true && userPassArr.length < targetLength) {
+  //     userPassArr += getRandom(specialCharacters);
+  //   }
+  //   return userPassword;
+  // }
+
+  // // Function to generate password with user input
+  // function generatePassword() {
+  //   while (userPassArr.length < targetLength) {
+  //     constructPassword();
+  //   }
+  // }
+  // generatePassword();
+
+  //A function to generate a password based on user criteria
+  function generatePassword() {
     userPassword = "";
-    if (lowerPass == true && userPassArr.length < targetLength) {
-      userPassArr += getRandom(lowerCasedCharacters);
+    if (lowerPass) {
+      userPassArr += lowerCasedCharacters;
+    } 
+    if (upperPass) {
+      userPassArr += upperCasedCharacters;
     }
-    if (upperPass == true && userPassArr.length < targetLength) {
-      userPassArr += getRandom(upperCasedCharacters);
+    if (numPass) {
+      userPassArr += numericCharacters;
     }
-    if (numPass == true && userPassArr.length < targetLength) {
-      userPassArr += getRandom(numericCharacters);
+    if (specialPass) {
+      userPassArr += specialCharacters;
     }
-    if (specialPass == true && userPassArr.length < targetLength) {
-      userPassArr += getRandom(specialCharacters);
+    for (var i = 0; i < targetLength; i++) {
+      userPassword += userPassArr.charAt(
+        Math.floor(Math.random() * userPassArr.length)
+      );
     }
     return userPassword;
-  }
-
-  // Function to generate password with user input
-  function generatePassword() {
-    while (userPassArr.length < targetLength) {
-      constructPassword();
-    }
   }
   generatePassword();
 
